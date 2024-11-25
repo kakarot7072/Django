@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        {% block content %}
+        <h1>Project Form</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <!-- for making form horizontal -->
+            <!-- {% for x in page %}
+                {{x.label}}
+                {{x}}
+            {% endfor %} -->
+            {{page.as_p}}
+            <!-- {{form.title.label}}
+            {{form.title}}
+            {{form.description.label}}
+            {{form.description}} -->
+            <input type="submit">
+        </form>
+        {% endblock %}
+    </body>
+
+</html>

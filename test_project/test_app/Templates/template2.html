@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        {% block content %}
+
+        <p>This is Page 02.</p>
+        <h1>{{project.title}}</h1>
+        <br>
+        <p>{{project.Description}}</p>
+
+        {% endblock %}
+    </body>
+
+</html>

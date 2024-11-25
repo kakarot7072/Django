@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        {% block content %}
+
+        <H2>Wellcome to Website.</h2>
+
+        {{message}}
+
+        <!-- {% if num > 10 %}
+        <p>Num is greater than 10</p>
+        {% elif num == 10 %}
+        <p>Num is equal to 10</p>
+        {% else %}
+        <p>Num is smaller than 10</p>
+        {% endif %} -->
+
+        <!-- <ul>
+            {% for x in work %}
+            <li>name: <a href="{% url 'second' x.id %}">{{x.title}}</a> --- {{x.Description}}</li>
+            {% endfor %}
+        </ul> -->
+
+        <table>
+            <tr>
+                <!-- <th>ID</th> -->
+                <th>Project</th>
+                <th>Votes</th>
+                <th>Positive Votes</th>
+                <th>created</th>
+            </tr>
+
+            {% for x in work %}
+            <tr>
+                <!-- <td>{{x.id}}</td> -->
+                <td>{{x.title}}</td>
+                <td>{{x.vote_total}}</td>
+                <td>{{x.vote_ratio}}</td>
+                <td>{{x.created}}</td>
+                <td><a href="{% url 'second' x.id %}">View</a></td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        {% endblock %}
+
+    </body>
+
+</html>
