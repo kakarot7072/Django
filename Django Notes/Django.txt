@@ -1,0 +1,38 @@
+Step 1. Create a venv 
+
+>> py -m venv name_venv
+
+Step 2. Activate venv 
+
+>> name_venv\Scripts\activate
+
+Step 3. Install moduls
+
+>> pip install Django
+>> pip install Httpie
+>> pip install djangorestframework
+
+Step 4. Create a project
+
+>> django-admin startproject name_project
+
+Step 5. change directory to the project folder
+
+>> cd name_project
+
+Step 6. Run the server
+
+>> py manage.py runserver
+
+Step 7. Create Application in Project folder
+
+>> django-admin startapp name_app
+      py manage.py startapp name_app
+
+Step 8. Migrate the project to make everything in working condition
+
+>> py manage.py migrate
+
+Step 9. Create Super User
+
+>> py manage.py createsuperuser
