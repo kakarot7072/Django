@@ -1,140 +1,138 @@
 <!DOCTYPE html>
+
+{% load static %}
+
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Mr. Raman Singh {% endblock title %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Mr. Raman Singh {% endblock title %}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" media="screen" href="{% static 'styling/main.css' %}">
+        <title>Main</title>
+    </head>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-      }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
 
-      .footer {
-        background-color: #333;
-        color: #fff;
-        padding: 20px 0;
-      }
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
 
-      .footer-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 15px;
-      }
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin: 10px;
+        }
 
-      .footer-section {
-        flex: 1;
-        min-width: 250px;
-        margin: 10px;
-      }
+        .footer-section h3 {
+            margin-bottom: 15px;
+        }
 
-      .footer-section h3 {
-        margin-bottom: 15px;
-      }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
 
-      .footer-section ul {
-        list-style: none;
-        padding: 0;
-      }
+        .footer-section ul li {
+            margin: 5px 0;
+        }
 
-      .footer-section ul li {
-        margin: 5px 0;
-      }
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
 
-      .footer-section ul li a {
-        color: #fff;
-        text-decoration: none;
-      }
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
 
-      .footer-section ul li a:hover {
-        text-decoration: underline;
-      }
+        .social-links a {
+            color: #fff;
+            margin-right: 10px;
+            font-size: 20px;
+        }
 
-      .social-links a {
-        color: #fff;
-        margin-right: 10px;
-        font-size: 20px;
-      }
+        .social-links a:hover {
+            color: #ff9800;
+        }
 
-      .social-links a:hover {
-        color: #ff9800;
-      }
-
-      .footer-bottom {
-        text-align: center;
-        margin-top: 20px;
-        border-top: 1px solid #444;
-        padding-top: 10px;
-      }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #444;
+            padding-top: 10px;
+        }
     </style>
-  </head>
 
-  <body>
-    {% include 'navbar.html' %}
-    <h1>I am Raman Singh</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"></script>
-    
+    <body>
+        {% include 'navbar.html' %}
 
-    {% block content %}
+        <h1>I am Raman Singh</h1>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
 
 
-    {% endblock %}
+        {% block content %}
+
+
+        {% endblock %}
+    </body>
 
     <footer class="footer">
-      <div class="footer-container">
-        <!-- About Section -->
-        <div class="footer-section">
-          <h3>About US</h3>
-          <p>We are committed to delivering top-notch solutions to meet your business needs. Contact us for more
-            information.</p>
+        <div class="footer-container">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3>About US</h3>
+                <p>We are committed to delivering top-notch solutions to meet your business needs. Contact us for more
+                    information.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="{% url 'first' %}">Home</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto: kakarot@gmail.com">kakarot@gmail.com</a></p>
+                <p>Phone: +123(456)7890</p>
+                <p>Address: &frac58;, Ram Nagar, Mars</p>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="footer-section social-links">
+                <h3>Follow Us</h3>
+                <a href="#" target="_blank" aria-label="Facebook">&#xF344;Facebook</a>
+                <a href="#" target="_blank" aria-label="Twitter">&#xF8DB;Twitter</a>
+                <a href="#" target="_blank" aria-label="Instagram">&#xF437;Instagram</a>
+                <a href="#" target="_blank" aria-label="LinkedIn">&#xF472;LinkedIn</a>
+            </div>
         </div>
 
-        <!-- Quick Links -->
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="{% url 'first' %}">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 1694 KAKAROT &copysr; Ltd. All Rights Reserved.</p>
         </div>
-
-        <!-- Contact Section -->
-        <div class="footer-section">
-          <h3>Contact Us</h3>
-          <p>Email: <a href="mailto: kakarot@gmail.com">kakarot@gmail.com</a></p>
-          <p>Phone: +123(456)7890</p>
-          <p>Address: &frac58;, Ram Nagar, Mars</p>
-        </div>
-
-        <!-- Social Media Links -->
-        <div class="footer-section social-links">
-          <h3>Follow Us</h3>
-          <a href="#" aria-label="Facebook">&Fopf;</a>
-          <a href="#" aria-label="Twitter">&xopf;</a>
-          <a href="#" aria-label="Instagram">&Iota;</a>
-          <a href="https://www.linkedin.com/in/raman-singh-7a9864267" aria-label="LinkedIn">&Lopf;&iexcl;</a>
-        </div>
-      </div>
-
-
-      <!-- Footer Bottom -->
-      <div class="footer-bottom">
-        <p>&copy; 1694 KAKAROT &copysr; Ltd. All Rights Reserved.</p>
-      </div>
     </footer>
-
-
-  </body>
 
 </html>

@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Delete</title>
+    </head>
+
+    <body>
+        {% block content %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <p>Are you sure you want to delete this item: "{{object}}" ?</p>
+            <button><a href="{% url 'first' %}">Cancel</a></button>
+            <input type="submit" value="Confirm">
+        </form>
+        {% endblock %}
+    </body>
+
+</html>

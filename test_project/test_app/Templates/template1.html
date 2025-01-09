@@ -1,34 +1,43 @@
 {% extends 'main.html' %}
 
 <!DOCTYPE html>
+
+{% load static %}
+
 <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Home</title>
     </head>
 
     <body>
         {% block content %}
 
+        <style>
+            table {
+                margin: 1%;
+                text-align: center;
+            }
+
+            th {
+                padding: 5px;
+                border: 1px solid black;
+            }
+
+            tr {
+                padding: 5px;
+                border: 1px solid black;
+            }
+
+            td {
+                padding: 5px;
+                border: 1px solid black;
+            }
+        </style>
+
         <H2>Wellcome to Website.</h2>
-
-        {{message}}
-
-        <!-- {% if num > 10 %}
-        <p>Num is greater than 10</p>
-        {% elif num == 10 %}
-        <p>Num is equal to 10</p>
-        {% else %}
-        <p>Num is smaller than 10</p>
-        {% endif %} -->
-
-        <!-- <ul>
-            {% for x in work %}
-            <li>name: <a href="{% url 'second' x.id %}">{{x.title}}</a> --- {{x.Description}}</li>
-            {% endfor %}
-        </ul> -->
 
         <table>
             <tr>
@@ -36,7 +45,10 @@
                 <th>Project</th>
                 <th>Votes</th>
                 <th>Positive Votes</th>
-                <th>created</th>
+                <th>Created</th>
+                <th>Details</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
 
             {% for x in work %}
@@ -46,7 +58,9 @@
                 <td>{{x.vote_total}}</td>
                 <td>{{x.vote_ratio}}</td>
                 <td>{{x.created}}</td>
-                <td><a href="{% url 'second' x.id %}">View</a></td>
+                <td><a href="{% url 'second' x.id %}">🙈</a></td>
+                <td><a href="{% url 'update-project' x.id %}">✒️</a></td>
+                <td><a href="{% url 'delete-project' x.id %}">🗑️</a></td>
             </tr>
             {% endfor %}
 

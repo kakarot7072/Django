@@ -4,4 +4,4 @@ from .models import table
 class tableform(ModelForm):
     class Meta:
         model = table
-        fields = ['title', 'description', 'demo_link', 'source_link', 'tags']
+        fields = ['title', 'description', 'demo_link', 'source_link', 'tags', 'feature']

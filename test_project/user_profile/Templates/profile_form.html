@@ -9,17 +9,17 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Form</title>
+        <title>Profile Form</title>
     </head>
-    
+
 
     <body>
-        
+
         {% block content %}
         <style>
             .form {
                 display: flex;
-                background-color: whitesmoke;
+                background-color: lightgrey;
                 flex-direction: column;
                 text-align: center;
                 padding: 20px;
@@ -29,20 +29,13 @@
                 margin: 0 auto;
                 margin-bottom: 1%;
             }
-        </style>    
-        <h2>Project Form</h2>
+        </style>
+
+        <h2>User Profiles</h2>
+        <a href="{% url 'createprofile' %}">Add Profile</a>
         <form class="form" action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <!-- for making form horizontal -->
-            <!-- {% for x in page %}
-                {{x.label}}
-                {{x}}
-            {% endfor %} -->
-            {{page.as_p}}
-            <!-- {{form.title.label}}
-            {{form.title}}
-            {{form.description.label}}
-            {{form.description}} -->
+            {{profile_page.as_p}}
             <input type="submit">
         </form>
         {% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profile</title>
+    </head>
+
+    <body>
+        {% block content %}
+        <h1>User Profile</h1>
+        <div class="profile-header">
+            <img style="max-width: 200px;" src="{% static 'profiles/profile-icon.png' %}" alt="Profile Picture">
+            <div>
+                <h2>KAKAROT</h2>
+                <p>Email: kakarot@outlook.com</p>
+                <!-- <p>Joined: {{ user.joined_date }}</p> -->
+            </div>
+        </div>
+
+        <div class="profile-info">
+            <h3>About Me</h3>
+            <!-- <p>{{ user.bio }}</p> -->
+        </div>
+
+        <!-- <div class="actions">
+            <a href="/edit-profile">Edit Profile</a>
+            <a href="/logout">Log Out</a>
+        </div> -->
+        {% endblock %}
+    </body>
+
+</html>

@@ -1,22 +1,42 @@
 {% extends 'main.html' %}
 
 <!DOCTYPE html>
+
+{% load static %}
+
 <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>User</title>
     </head>
+
 
     <body>
         {% block content %}
+        <style>
+            .s {
+                margin: 5px;
+                border: 2px solid black;
+                border-radius: 8px;
+                background: black;
+                color: white;
+            }
+
+            .img {
+                max-width: 200px;
+            }
+        </style>
 
         <p>This is Page 02.</p>
+        <img class="img" src="{{project.feature.url}}" alt="template2">
         <h1>{{project.title}}</h1>
         <br>
-        <p>{{project.Description}}</p>
-
+        <p>{{project.description}}</p>
+        {% for x in tags %}
+        <span class="s">{{x}}</span>
+        {% endfor %}
         {% endblock %}
     </body>
 

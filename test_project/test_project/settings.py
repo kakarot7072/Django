@@ -40,11 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'test_app',
-
+    'user_profile',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -61,7 +64,8 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, "Templates"),
             os.path.join(BASE_DIR, "test_app/Templates"),
-            
+            os.path.join(BASE_DIR, "user_profile/Templates"),
+                        
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -124,7 +128,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = BASE_DIR / 'static',
+MEDIA_URL = ''
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
+MEDIA_ROOT = os.path.join(BASE_DIR / 'static/images')
+STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

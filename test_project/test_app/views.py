@@ -2,54 +2,57 @@ from django.shortcuts import render, redirect
 from .forms import tableform
 # Create your views here.
 from .models import table
-from django.http import HttpResponse
 
-projectlist = [
-    {
-        'id': '1',
-        'title': 'Ecommerce Website',
-        'Description': 'A full func. Website'
-    },
-    {
-        'id': '2',
-        'title': 'Social Website',
-        'Description': 'A full func. Website'
-    },
-    {
-        'id': '3',
-        'title': 'Food Website',
-        'Description': 'Food Lowers Website'
-    }
-]
 
 def home(request):
-    msg = "I am Data."
-    number = 10
-    context = {
-        'message': msg,
-        'num': number,
-        'work': projectlist,
-    }
-
     projects = table.objects.all()
-    context = {"work": projects}
+    context = {'work': projects}
     return render(request, "template1.html", context)
 
 def user(request, cookie):
-    projectobj = None
-    for a in projectlist:
-        if a["id"] == cookie:
-            projectobj = a
-    return render(request, "template2.html", {"project": projectobj})
+    projectobj = table.objects.get(id = cookie)
+    tags = projectobj.tags.all()
+    return render(request, "template2.html", {"project": projectobj, 'tags':tags})
 
 def createproject(request):
     form = tableform()
 
     if request.method == 'POST':
-        form = tableform(request.POST)
+        form = tableform(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('first')
 
     context = {'page': form}
     return render(request, "form.html", context)
+
+def updateproject(request, pk):
+    projectobj = table.objects.get(id=pk)
+    form = tableform(instance=projectobj)
+
+    if request.method == 'POST':
+        form = tableform(request.POST, request.FILES, instance=projectobj)
+        if form.is_valid():
+            form.save()
+            return redirect('first')
+    context = {'page': form}
+    return render(request, "form.html", context)
+
+def deleteproject(request, pk):
+    project = table.objects.get(id=pk)
+    form = tableform(instance=project)
+
+    if request.method == 'POST':
+        project.delete()
+        return redirect('first')
+    context = {'object':project}
+    return render(request, "delete.html", context)
+
+def services(request):
+    return render(request, "services.html")
+
+def about(request):
+    return render(request, "about.html")
+
+def contact(request):
+    return render(request, "contact.html")
